@@ -44,9 +44,7 @@ public class TargetUI : MonoBehaviour
 		// Position city name
 		float countryTextCentreX = countryNameUI.rectTransform.localPosition.x + countryNameUI.bounds.size.x / 2;
 		cityNameUI.rectTransform.localPosition = new Vector2(countryTextCentreX, cityNameUI.rectTransform.localPosition.y);
-
-
-
+		
 		ResizeContentBoundsToFitText();
 	}
 
@@ -57,10 +55,10 @@ public class TargetUI : MonoBehaviour
 		{
 			Debug.Log("---------Is null " + gameObject.name);
 		}
-		float countryNameRightEdge = countryNameUI.rectTransform.anchoredPosition.x + countryNameUI.bounds.size.x; // pivot on left edge
-		//float cityNameRightEdge = cityNameUI.rectTransform.anchoredPosition.x + cityNameUI.bounds.size.x / 2; // pivot in centre
-		rectTransform.sizeDelta = new Vector2(countryNameRightEdge, rectTransform.sizeDelta.y);
-		//var r = gameObject.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>();
+		//float countryNameRightEdge = countryNameUI.rectTransform.anchoredPosition.x + countryNameUI.bounds.size.x; // pivot on left edge
+		float cityNameRightEdge = cityNameUI.rectTransform.anchoredPosition.x + cityNameUI.bounds.size.x / 2; // pivot in centre
+		rectTransform.sizeDelta = new Vector2(cityNameRightEdge, rectTransform.sizeDelta.y);
+		var r = gameObject.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>();
 
 	}
 

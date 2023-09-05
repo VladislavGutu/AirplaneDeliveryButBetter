@@ -75,7 +75,7 @@
                 {
                     "name": "",
                     "id": "4bcdae3e-9221-4050-8e56-202c21fe2abb",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<NPad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -150,6 +150,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "",
+                    "id": "60b9d831-2147-481e-add0-552b9e764ea7",
+                    "path": "<NPad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "Change Speed",
                     "id": "39ad45e4-7a2f-4c0e-98fc-ae8bfcb77856",
                     "path": "1DAxis",
@@ -196,7 +207,7 @@
                 {
                     "name": "negative",
                     "id": "e47dad47-1084-4ecd-807c-d1c99d50beba",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<NPad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -207,7 +218,7 @@
                 {
                     "name": "positive",
                     "id": "b6bb5a67-08de-43e1-997b-b3c5fc6370ea",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<NPad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -229,7 +240,7 @@
                 {
                     "name": "",
                     "id": "607932a8-e61e-4797-a397-fb51b91d5bd6",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<NPad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -422,7 +433,7 @@
                 {
                     "name": "",
                     "id": "dc306293-0abd-4bf6-a3f1-a93ff8b8194d",
-                    "path": "<Gamepad>/start",
+                    "path": "<NPad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -444,7 +455,7 @@
                 {
                     "name": "",
                     "id": "1f7a0fe4-d96a-47c6-883a-f5e5e70a133e",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<NPad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -503,7 +514,7 @@
                 {
                     "name": "negative",
                     "id": "69169f2d-eadb-468e-8d6a-6660817e8712",
-                    "path": "<Gamepad>/rightStick/down",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -558,7 +569,7 @@
                 {
                     "name": "",
                     "id": "90a4867d-43d3-43fa-9ba9-38f795e0d4fc",
-                    "path": "<Gamepad>/leftStick",
+                    "path": "<NPad>/leftStick",
                     "interactions": "",
                     "processors": "ScaleVector2(x=25,y=25),InvertVector2",
                     "groups": "Gamepad",

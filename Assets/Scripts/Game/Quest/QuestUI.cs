@@ -28,7 +28,7 @@ namespace GeoGame.Quest
 
 			for (int i = 0; i < countryTargets.Length; i++)
 			{
-				countryTargets[i] = Instantiate(countryTargetPrefab, parent: countryTargetsRect.transform);
+				countryTargets[i] = Instantiate(countryTargetPrefab/*, parent: countryTargetsRect.transform*/);
 			}
 		}
 
@@ -158,7 +158,7 @@ namespace GeoGame.Quest
 			// Calculate layout with new target
 			Vector2[] targetPos = CalculateTargetLayout();
 			// Move new target off screen
-			Vector2 newTargetStartPos = targetPos[index] + Vector2.up * countryTargets[index].RectTransform.sizeDelta.y;
+			Vector2 newTargetStartPos = targetPos[index] + Vector2.right * countryTargets[index].RectTransform.sizeDelta.x;
 			countryTargets[index].RectTransform.localPosition = newTargetStartPos;
 
 			const float durationDisappear = 0.5f;
@@ -269,12 +269,12 @@ namespace GeoGame.Quest
 			float x = -containerWidth / 2;
 			for (int i = 0; i < countryTargets.Length; i++)
 			{
-				float rectWidth = countryTargets[i].RectTransform.sizeDelta.x;
+				float rectWidth = countryTargets[i].RectTransform.sizeDelta.y;
 				x += rectWidth / 2;
 				x += spacing;
 				//Debug.Log(x);
 				//countryTargets[i].RectTransform.localPosition = new Vector2(x, 0);
-				localPositions[i] = new Vector2(x, 0);
+				localPositions[i] = new Vector2(0, x);
 				x += rectWidth / 2;
 			}
 			return localPositions;

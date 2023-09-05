@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainMenu : Menu
@@ -26,6 +27,7 @@ public class MainMenu : Menu
 
 		playButton.onClick.AddListener(PlayGame);
 		quitButton.onClick.AddListener(Quit);
+		EventSystem.current.SetSelectedGameObject(playButton.gameObject);
 
 	}
 

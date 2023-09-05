@@ -170,15 +170,16 @@ namespace GeoGame.Quest
 			{
 				if (Input.GetKeyDown(KeyCode.Alpha8))
 				{
-					OnPickup(0);
+					StartCoroutine(OnPickup(0));
 				}
 				if (Input.GetKeyDown(KeyCode.Alpha9))
 				{
+					StartCoroutine(OnPickup(1));
 					OnPickup(1);
 				}
 				if (Input.GetKeyDown(KeyCode.Alpha0))
 				{
-					OnPickup(2);
+					StartCoroutine(OnPickup(2));
 				}
 			}
 		}
@@ -249,8 +250,8 @@ namespace GeoGame.Quest
 			// Spawn city marker
 			Vector3 cityPointUnitSphere = completedQuest.deliverLocation.cityPointUnitSphere;
 			Vector3 cityPoint = cityPointUnitSphere * targetCityTerrainHeight;
-			CityMarker cityMarker = Instantiate(cityMarkerPrefab, parent: transform);
-			cityMarker.Init(cityPoint, gameCamera.transform.position);
+			//CityMarker cityMarker = Instantiate(cityMarkerPrefab, parent: transform);
+			//cityMarker.Init(cityPoint, gameCamera.transform.position);
 
 
 			// Calculate results
@@ -269,7 +270,6 @@ namespace GeoGame.Quest
 			string resultMessage = CreateResultMessage(result);
 			messageUI.ShowMessage(resultMessage, resultMessageDuration);
 			Debug.Log(resultMessage);
-
 			AddBoost(result);
 
 			yield return new WaitForSeconds(1);
@@ -289,19 +289,35 @@ namespace GeoGame.Quest
 			// Spawn hot air ballooon
 			Vector3 pickupPos = quest.pickupLocation.cityPointUnitSphere * heightSettings.worldRadius;
 			HotAirBalloon hotAirBalloon = Instantiate(hotAirBalloonPrefab, parent: transform);
-			hotAirBalloon.Init(player.transform, pickupPos, () => OnPickup(index), quest.pickupLocation.flag);
+			hotAirBalloon.Init(player.transform, pickupPos, () => StartCoroutine(OnPickup(index)), quest.pickupLocation.flag);
 		}
 
 		// Called when player picks up package from a hot air balloon
-		void OnPickup(int questIndex)
+		IEnumerator OnPickup(int questIndex)
 		{
+			
+			float startTime = Time.time;
 			Quest quest = activeQuests[questIndex];
 			quest.hasPickedUp = true;
 			questUI.SetTarget(questIndex, quest.deliverLocation, isPickup: false, animate: true);
-
+			
 			string countryName = quest.deliverLocation.GetCountryDisplayName();
 			string message = $"You collected a package! It's marked for delivery to {quest.deliverLocation.city.name}, {countryName}";
 			messageUI.ShowMessage(message, pickupMessageDuration);
+			//New Project 
+			float targetCityTerrainHeight = -1;
+			worldLookup.GetTerrainInfoAsync(quest.deliverLocation.city.coordinate, (TerrainInfo info) => targetCityTerrainHeight = info.height);
+			/*Package package = player.DropPackage();
+			yield return new WaitUntil(() => package.hasTerrainInfo && targetCityTerrainHeight >= 0);*/
+			// Wait a little bit before revealing the result
+			const float delayBeforeShowingResults = 1;
+			yield return new WaitForSeconds(delayBeforeShowingResults - (Time.time - startTime));
+			
+			Vector3 cityPointUnitSphere = quest.deliverLocation.cityPointUnitSphere;
+			Vector3 cityPoint = cityPointUnitSphere * targetCityTerrainHeight;
+			CityMarker cityMarker = Instantiate(cityMarkerPrefab, parent: transform);
+			cityMarker.Init(cityPoint, gameCamera.transform.position);
+			//New
 			Debug.Log(message);
 			//questUI.SetTarget(questIndex, quest.deliverCountry, quest.deliverCity, isPickup: false);
 		}
