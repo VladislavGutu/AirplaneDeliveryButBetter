@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 	public float speedSmoothing = 0.1f;
 	public float maxBoostTime = 30;
 	public float boostTimeAtStart = 5;
+	public Fuel fuel;
 
 	[HideInInspector]
 	public float totalTurnAngle;
@@ -269,7 +270,7 @@ public class Player : MonoBehaviour
 		SetPlaneRotation();
 
 		// Rotate propeller
-		propeller.localEulerAngles += Vector3.forward * propellerSpeed * Time.deltaTime;
+		//propeller.localEulerAngles += Vector3.forward * propellerSpeed * Time.deltaTime;
 
 		// Turn on navigation lights at night (even if should technically be on always I think...)
 		if (Time.time > nextNavigationLightUpdateTime && sunLight != null)
@@ -374,6 +375,11 @@ public class Player : MonoBehaviour
 	public void AddBoost(float time)
 	{
 		boostTimeToAdd += time;
+	}
+	public void AddFuel(float time)
+	{
+		fuel.currentFuel += time ;
+		Debug.Log(time);
 	}
 
 	public Package DropPackage()

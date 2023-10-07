@@ -252,8 +252,7 @@ namespace GeoGame.Quest
 			Vector3 cityPoint = cityPointUnitSphere * targetCityTerrainHeight;
 			//CityMarker cityMarker = Instantiate(cityMarkerPrefab, parent: transform);
 			//cityMarker.Init(cityPoint, gameCamera.transform.position);
-
-
+			
 			// Calculate results
 			DeliveryResult result = new DeliveryResult();
 			result.targetCountry = completedQuest.deliverLocation.country;
@@ -325,22 +324,28 @@ namespace GeoGame.Quest
 		void AddBoost(DeliveryResult result)
 		{
 			float boostAdd = 0;
+			float fuelAdd = 0;
 			if (result.distanceKM <= perfectRadius)
 			{
 				boostAdd = perfectBoostTimeAdd;
+				fuelAdd = perfectBoostTimeAdd;
 			}
 			else
 			{
 				float t = Mathf.InverseLerp(perfectRadius, okRadius, result.distanceKM);
 				float maxNonPerfectBoostIncrease = perfectBoostTimeAdd * 0.75f;
 				boostAdd = Mathf.Lerp(maxNonPerfectBoostIncrease, 0, 1 - Mathf.Pow(1 - t, 3));
+				fuelAdd = Mathf.Lerp(maxNonPerfectBoostIncrease, 0, 1 - Mathf.Pow(1 - t, 3));
 				if (result.landedInCorrectCountry)
 				{
 					boostAdd += 2;
+					fuelAdd += 2;
 					boostAdd = Mathf.Min(boostAdd, maxNonPerfectBoostIncrease);
+					fuelAdd = Mathf.Min(fuelAdd, maxNonPerfectBoostIncrease);
 				}
 			}
 			player.AddBoost(boostAdd);
+			player.AddFuel(boostAdd * 2);
 		}
 
 		string CreateResultMessage(DeliveryResult result)
