@@ -60,8 +60,9 @@ public class FlockChild:MonoBehaviour{
     }
     
     public void Update() {
+	    
     	//Skip frames
-    	if (_spawner._updateDivisor <=1 || _spawner._updateCounter == _updateSeed){
+        if (_spawner._updateDivisor <= 1 || _spawner._updateCounter == _updateSeed){
     		SoarTimeLimit();
     		CheckForDistanceToWaypoint();
     		RotationBasedOnWaypointOrAvoidance();

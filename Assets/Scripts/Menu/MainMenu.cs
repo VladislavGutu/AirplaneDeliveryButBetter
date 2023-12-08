@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : Menu
@@ -25,6 +26,13 @@ public class MainMenu : Menu
 	{
 		version.text = $"Version {Application.version}";
 
+		if (PlayerPrefs.GetInt("FirstEnter",0) == 0)
+		{
+			SceneManager.LoadScene(0);
+		}
+
+		PlayerPrefs.SetInt("FirstEnter", 1);
+		
 		playButton.onClick.AddListener(PlayGame);
 		quitButton.onClick.AddListener(Quit);
 		EventSystem.current.SetSelectedGameObject(playButton.gameObject);

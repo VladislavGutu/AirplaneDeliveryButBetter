@@ -78,14 +78,14 @@ public class CreditsMenu : Menu
 	}
 	void AddText(string textString)
 	{
-		text.text += textString;
+		//text.text += textString;
 	}
 
 	void AddLineBreak(int num = 1)
 	{
 		for (int i = 0; i < num; i++)
 		{
-			text.text += "\n";
+			//text.text += "\n";
 		}
 	}
 

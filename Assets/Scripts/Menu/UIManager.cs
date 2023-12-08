@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
+	public static UIManager _instance;
 	public Player player;
 	public GameObject game;
 	public PauseMenu pauseMenu;
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
 	void Awake()
 	{
 		hudGroup.alpha = 0;
+		_instance = this;
 	}
 
 	void Update()
@@ -30,8 +32,6 @@ public class UIManager : MonoBehaviour
 		bool uiIsActive = GameController.IsState(GameState.Playing) || GameController.IsState(GameState.ViewingMap);
 
 		hudGroup.alpha = Mathf.SmoothDamp(hudGroup.alpha, uiIsActive ? 1 : 0, ref smoothV, smoothT);
-
-
 	}
 
 	public void ToggleMap()

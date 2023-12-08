@@ -25,7 +25,7 @@ public class SkinChanger : MonoBehaviour
         coins = PlayerPrefs.GetInt("coins");
         index = PlayerPrefs.GetInt("chosenSkin");
         coinsText.text = coins.ToString();
-        fuelText.text = "Fuel: " + info[index].fuel.ToString()+ "00";
+        fuelText.text = "Fuel: " + info[index].fuel.ToString();
         fuelSlider.currentFuel = info[index].fuel;
 
         StockCheck = new bool[53];
@@ -93,7 +93,7 @@ public class SkinChanger : MonoBehaviour
             if (info[index].inStock && info[index].isChosen)
             {
                 priceText.text = "CHOOSEN";
-                fuelText.text = "Fuel: " + info[index].fuel.ToString()+ "00";
+                fuelText.text = "Fuel: " + info[index].fuel.ToString();
                 fuelSlider.currentFuel = info[index].fuel;
                 buyBttn.interactable = true;
              
@@ -101,14 +101,14 @@ public class SkinChanger : MonoBehaviour
             else if (!info[index].inStock)
             {
                 priceText.text = info[index].cost.ToString();
-                fuelText.text = "Fuel: " + info[index].fuel.ToString()+ "00";
+                fuelText.text = "Fuel: " + info[index].fuel.ToString();
                 fuelSlider.currentFuel = info[index].fuel;
                 buyBttn.interactable = true;
             }
             else if (info[index].inStock && !info[index].isChosen)
             {
                 priceText.text = "CHOOSE";
-                fuelText.text = "Fuel: " + info[index].fuel.ToString()+ "00";
+                fuelText.text = "Fuel: " + info[index].fuel.ToString();
                 fuelSlider.currentFuel = info[index].fuel;
                 buyBttn.interactable = true;
             }
@@ -131,14 +131,14 @@ public class SkinChanger : MonoBehaviour
             {
                 priceText.text = "CHOSEN";
                 buyBttn.interactable = false;
-                fuelText.text = "Fuel: " + info[index].fuel.ToString()+ "00";
+                fuelText.text = "Fuel: " + info[index].fuel.ToString();
                 fuelSlider.currentFuel = info[index].fuel;
             }
             else if (!info[index].inStock)
             {
                 priceText.text = info[index].cost.ToString();
                 buyBttn.interactable = true;
-                fuelText.text = "Fuel: "+ info[index].fuel.ToString()+ "00";
+                fuelText.text = "Fuel: "+ info[index].fuel.ToString();
                 fuelSlider.currentFuel = info[index].fuel;
             }
             else if (info[index].inStock && !info[index].isChosen)
@@ -146,7 +146,7 @@ public class SkinChanger : MonoBehaviour
                 priceText.text = "CHOOSE";
                 buyBttn.interactable = true;
                 
-                fuelText.text = "Fuel: " + info[index].fuel.ToString()+ "00";
+                fuelText.text = "Fuel: " + info[index].fuel.ToString();
                 fuelSlider.currentFuel = info[index].fuel;
             }
 

@@ -345,7 +345,7 @@ namespace GeoGame.Quest
 				}
 			}
 			player.AddBoost(boostAdd);
-			player.AddFuel(boostAdd * 2);
+			player.AddFuel(boostAdd * (player.fuel.fuelDisplay.maxValue / 35));
 		}
 
 		string CreateResultMessage(DeliveryResult result)
@@ -359,6 +359,8 @@ namespace GeoGame.Quest
 				landedInCountryName = result.countryPackageLandedIn.GetPreferredDisplayName(15);
 			}
 			// Create result message
+			
+			AddBoost(result);
 
 			// Perfect delivery
 			if (result.distanceKM <= perfectRadius)
@@ -423,6 +425,7 @@ namespace GeoGame.Quest
 					return $"Oh no! The package will land {dstString} away from the city, and in {landedInCountryName} instead of {targetCountryName}.";
 				}
 			}
+			
 
 			string DistanceString(float dstKm)
 			{
@@ -434,6 +437,7 @@ namespace GeoGame.Quest
 				}
 				return s;
 			}
+			
 		}
 
 		public float TimeSinceGameStart
