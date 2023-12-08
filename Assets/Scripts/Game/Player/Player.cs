@@ -91,6 +91,8 @@ public class Player : MonoBehaviour
 	Vector3 lastRecordedPos;
 	Vector3 posLastFrame;
 
+	public StatsMenu StatsMenu;
+
 
 	// Note: this is calculated as dst on surface of earth (meaning elevation has no effect)
 	public float distanceTravelledKM { get; private set; }
@@ -458,11 +460,19 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	[System.Serializable]
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Bird")
+		{
+			StatsMenu.OpenMenu();
+		}
+    }
+    [System.Serializable]
 	public struct PlayerStartPoint
 	{
 		public CoordinateDegrees coordinate;
 		public float angle;
 		[Range(0, 1)] public float elevationT;
 	}
+    
 }

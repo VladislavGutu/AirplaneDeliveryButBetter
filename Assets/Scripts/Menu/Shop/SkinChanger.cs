@@ -16,6 +16,7 @@ public class SkinChanger : MonoBehaviour
     public Transform player;
     public int index;
     public Fuel fuelSlider;
+    public GameObject ShopCanvas;
 
     public int coins;
 
@@ -73,6 +74,15 @@ public class SkinChanger : MonoBehaviour
     {
         PlayerPrefsX.SetBoolArray("StockArray",StockCheck);
     }
+    public void GameStart()
+    {
+        if (info[index].inStock)
+        {
+            GameController.StartGame();
+            ShopCanvas.SetActive(false);
+
+        }
+    }
 
     public void ScrollRight()
     {
@@ -82,10 +92,11 @@ public class SkinChanger : MonoBehaviour
 
             if (info[index].inStock && info[index].isChosen)
             {
-                priceText.text = "CHOSEN";
+                priceText.text = "CHOOSEN";
                 fuelText.text = "Fuel: " + info[index].fuel.ToString()+ "00";
                 fuelSlider.currentFuel = info[index].fuel;
-                buyBttn.interactable = false;
+                buyBttn.interactable = true;
+             
             }
             else if (!info[index].inStock)
             {

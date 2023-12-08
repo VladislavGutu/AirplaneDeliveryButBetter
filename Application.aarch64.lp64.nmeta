@@ -17,7 +17,7 @@
     </Title>
     <Icon>
       <Language>AmericanEnglish</Language>
-      <IconPath>..\..\..\..\..\..\Nintendo\2022.3.7\NintendoSDK\Resources\SpecFiles\NintendoSDK_Application.bmp</IconPath>
+      <IconPath>Assets\UI\midnightworks_airplane_delivery_drop_one_package_421353ed-0296-4873-9a16-097dcb766164.bmp</IconPath>
     </Icon>
     <ReleaseVersion>0</ReleaseVersion>
     <DisplayVersion>1.0.0</DisplayVersion>

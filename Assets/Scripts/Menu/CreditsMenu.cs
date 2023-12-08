@@ -30,7 +30,7 @@ public class CreditsMenu : Menu
 	void Refresh()
 	{
 		hyperlinkOpener.hoverColor = linkHoverCol;
-		text.text = "";
+		//text.text = "";
 
 		AddText(SetColour("Created by Sebastian Lague.", Color.white));
 		AddLineBreak();
