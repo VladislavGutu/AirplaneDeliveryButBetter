@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Seb.Meshing;
+using UnityEngine.Rendering;
 
 public class LodMeshLoader : MonoBehaviour
 {
@@ -55,6 +56,8 @@ public class LodMeshLoader : MonoBehaviour
 			if (useStaticBatching)
 			{
 				meshRenderers[i].gameObject.isStatic = true;
+				meshRenderers[i].receiveShadows = false;
+				meshRenderers[i].shadowCastingMode = ShadowCastingMode.Off;
 			}
 		}
 

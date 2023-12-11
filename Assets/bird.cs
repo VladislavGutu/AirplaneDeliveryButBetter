@@ -266,7 +266,7 @@ public class bird : MonoBehaviour
     {
         // Rotate ailerons when turning
         UpdateAileronGraphic(ailerons[0], -turnInput * aileronAngle);
-        UpdateAileronGraphic(ailerons[1], turnInput * aileronAngle);
+        // UpdateAileronGraphic(ailerons[1], turnInput * aileronAngle);
 
         // Set pitch/roll rotation
         SetPlaneRotation();

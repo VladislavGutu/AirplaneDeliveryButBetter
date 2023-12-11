@@ -68,6 +68,7 @@ public class GameController : MonoBehaviour
 			Time.timeScale = 0;
 			SetState(GameState.GameOver);
 			Instance.statsMenu.OpenMenu();
+			
 		}
 	}
 
@@ -136,6 +137,7 @@ public class GameController : MonoBehaviour
 		{
 			SetPauseState(false);
 		}
+		
 		SceneManager.LoadScene(0);
 	}
 

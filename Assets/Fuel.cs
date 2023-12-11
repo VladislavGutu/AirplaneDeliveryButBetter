@@ -30,7 +30,7 @@ public class Fuel : MonoBehaviour
             else
             {
                 countDown = baseInterval;
-                currentFuel -= 15f;
+                currentFuel -= 1f;
                 fuelDisplay.value = currentFuel;
             }
 

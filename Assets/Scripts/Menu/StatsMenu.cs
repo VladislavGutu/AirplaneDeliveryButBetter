@@ -45,6 +45,7 @@ public class StatsMenu : Menu
 	protected override void OnMenuOpened()
 	{
 		Refresh();
+		GameController.IsState(GameState.Paused);
 	}
 
 	[NaughtyAttributes.Button()]

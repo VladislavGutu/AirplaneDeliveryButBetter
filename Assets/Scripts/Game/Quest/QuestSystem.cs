@@ -124,6 +124,7 @@ namespace GeoGame.Quest
 				SavePersonalBestTimedScore(personalBest);
 			}
 
+			PlayerPrefs.SetInt("coins", score);
 
 			GameController.GameOver();
 		}
@@ -271,6 +272,7 @@ namespace GeoGame.Quest
 			Debug.Log(resultMessage);
 			AddBoost(result);
 
+			
 			yield return new WaitForSeconds(1);
 
 			// Start new quest
@@ -344,8 +346,9 @@ namespace GeoGame.Quest
 					fuelAdd = Mathf.Min(fuelAdd, maxNonPerfectBoostIncrease);
 				}
 			}
-			player.AddBoost(boostAdd);
-			player.AddFuel(boostAdd * (player.fuel.fuelDisplay.maxValue / 35));
+			player.AddBoost(boostAdd/2f);
+			player.AddFuel(boostAdd * (player.fuel.fuelDisplay.maxValue / 75));
+
 		}
 
 		string CreateResultMessage(DeliveryResult result)

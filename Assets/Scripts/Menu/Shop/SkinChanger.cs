@@ -22,8 +22,8 @@ public class SkinChanger : MonoBehaviour
 
     private void Awake()
     {
-        coins = PlayerPrefs.GetInt("coins");
-        index = PlayerPrefs.GetInt("chosenSkin");
+        coins = PlayerPrefs.GetInt("coins", coins);
+        index = PlayerPrefs.GetInt("chosenSkin",0);
         coinsText.text = coins.ToString();
         fuelText.text = "Fuel: " + info[index].fuel.ToString();
         fuelSlider.currentFuel = info[index].fuel;
