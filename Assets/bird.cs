@@ -294,7 +294,7 @@ public class bird : MonoBehaviour
 
     void SetPlaneRotation()
     {
-        model.localEulerAngles = new Vector3(currentPitchAngle, 0, currentRollAngle);
+        // model.localEulerAngles = new Vector3(currentPitchAngle, 0, currentRollAngle);
     }
 
 

@@ -20,13 +20,49 @@ public class UIManager : MonoBehaviour
 	public float smoothT;
 	float smoothV;
 
+	public GameObject _mainMenuGO;
+	public GameObject _howToPlayGO;
+	public List<Image> _howToPlayImages;
+	private int _currentHowToPlay = 0;
 
 	void Awake()
 	{
 		hudGroup.alpha = 0;
 		_instance = this;
 	}
+	
+	public void PreviousImages()
+	{
+		_currentHowToPlay--;
+		if (_currentHowToPlay < 0)
+			_currentHowToPlay = 0;
 
+		for (int i = 0; i < _howToPlayImages.Count; i++)
+		{
+			_howToPlayImages[i].enabled = false;
+		}
+		_howToPlayImages[_currentHowToPlay].enabled = true;
+	}
+
+	public void NextImages()
+	{
+		_currentHowToPlay++;
+		if (_currentHowToPlay > _howToPlayImages.Count - 1)
+			_currentHowToPlay = _howToPlayImages.Count - 1;
+
+		for (int i = 0; i < _howToPlayImages.Count; i++)
+		{
+			_howToPlayImages[i].enabled = false;
+		}
+		_howToPlayImages[_currentHowToPlay].enabled = true;
+	}
+
+	public void CloseHowToPlay()
+	{
+		_howToPlayGO.SetActive(false);
+		_mainMenuGO.SetActive(true);
+	}
+	
 	void Update()
 	{
 		bool uiIsActive = GameController.IsState(GameState.Playing) || GameController.IsState(GameState.ViewingMap);

@@ -215,91 +215,91 @@ namespace SickscoreGames.HUDNavigationSystem
 		#region Utility Methods
 		IEnumerator CreateMapTextureRoutine ()
 		{
-			// create render camera
-			CreateRenderCamera ();
-
-			// update render texture
-			UpdateRenderTexture ();
-
-			// create map texture
-			string mapTexturePath = GetTexturePath ();
-			Vector2 mapTextureSize = GetTotalTextureSize ();
-			Texture2D mapTexture = new Texture2D ((int)mapTextureSize.x, (int)mapTextureSize.y, TextureFormat.RGB24, false);
-
-			// TextureCreator
-			try {
-				while (_isBusy) {
-					// manually render camera view
-					RenderCamera.Render ();
-
-					// set active render texture
-					RenderTexture.active = CameraRenderTexture;
-
-					// read pixels from current tile
-					mapTexture.ReadPixels (new Rect (Vector2.zero, mapTextureSize), 0, 0);
-
-					// apply changes to final texture
-					mapTexture.Apply ();
-
-					// unset active render texture
-					RenderTexture.active = null;
-
-					// write final map texture
-					byte[] bytes = mapTexture.EncodeToPNG ();
-					using (Stream stream = File.Create (mapTexturePath))
-						stream.Write (bytes, 0, bytes.Length);
-					
-					_isBusy = false;
-				}
-			} catch (System.Exception ex) {
-				Debug.LogException (ex);
-				yield break;
-			} finally {
-				RenderTexture.active = null;
-				DestroyRenderCamera ();
-				_isBusy = false;
-			}
-
-			// refresh asset database
-			AssetDatabase.Refresh ();
-
-			string relativeTexturePath = mapTexturePath.Substring (mapTexturePath.IndexOf ("Assets"));
-			TextureImporter textureImporter = AssetImporter.GetAtPath (relativeTexturePath) as TextureImporter;
-			if (textureImporter != null) {
-				// set texture as UI sprite
-				if (textureImporter.textureType != TextureImporterType.Sprite)
-					textureImporter.textureType = TextureImporterType.Sprite;
-
-				// update texture size
-				if (textureImporter.maxTextureSize != (int)TextureSize)
-					textureImporter.maxTextureSize = (int)TextureSize;
-
-				// clamp texture
-				if (textureImporter.wrapMode != TextureWrapMode.Clamp)
-					textureImporter.wrapMode = TextureWrapMode.Clamp;
-
-				// disable POT scaling
-				if (mapTextureSize.x != mapTextureSize.y && textureImporter.npotScale != TextureImporterNPOTScale.None)
-					textureImporter.npotScale = TextureImporterNPOTScale.None;
-
-				// save changes
-				textureImporter.SaveAndReimport ();
-
-				
-				HNSMapProfileUtilities.CreateProfile (relativeTexturePath, mapTextureSize, Background, MapBounds);
-				// create map profile
-
-				// refresh asset database
-				AssetDatabase.Refresh ();
-			} else {
-				Debug.LogError ("MapTextureCreator couldn't update the texture import settings. Please adjust the texture size manually within the texture import settings.");
-			}
-
-			// finish operation
-			EditorUtility.DisplayDialog ("HNS MapTextureCreator", string.Format ("Successfully created profile '{0}':\n\n{1}", MapName, mapTexturePath), "OK");
-
-			// destroy render camera
-			DestroyRenderCamera ();
+			// // create render camera
+			// CreateRenderCamera ();
+			//
+			// // update render texture
+			// UpdateRenderTexture ();
+			//
+			// // create map texture
+			// string mapTexturePath = GetTexturePath ();
+			// Vector2 mapTextureSize = GetTotalTextureSize ();
+			// Texture2D mapTexture = new Texture2D ((int)mapTextureSize.x, (int)mapTextureSize.y, TextureFormat.RGB24, false);
+			//
+			// // TextureCreator
+			// try {
+			// 	while (_isBusy) {
+			// 		// manually render camera view
+			// 		RenderCamera.Render ();
+			//
+			// 		// set active render texture
+			// 		RenderTexture.active = CameraRenderTexture;
+			//
+			// 		// read pixels from current tile
+			// 		mapTexture.ReadPixels (new Rect (Vector2.zero, mapTextureSize), 0, 0);
+			//
+			// 		// apply changes to final texture
+			// 		mapTexture.Apply ();
+			//
+			// 		// unset active render texture
+			// 		RenderTexture.active = null;
+			//
+			// 		// write final map texture
+			// 		byte[] bytes = mapTexture.EncodeToPNG ();
+			// 		using (Stream stream = File.Create (mapTexturePath))
+			// 			stream.Write (bytes, 0, bytes.Length);
+			// 		
+			// 		_isBusy = false;
+			// 	}
+			// } catch (System.Exception ex) {
+			// 	Debug.LogException (ex);
+			// 	yield break;
+			// } finally {
+			// 	RenderTexture.active = null;
+			// 	DestroyRenderCamera ();
+			// 	_isBusy = false;
+			// }
+			//
+			// // refresh asset database
+			// AssetDatabase.Refresh ();
+			//
+			// string relativeTexturePath = mapTexturePath.Substring (mapTexturePath.IndexOf ("Assets"));
+			// TextureImporter textureImporter = AssetImporter.GetAtPath (relativeTexturePath) as TextureImporter;
+			// if (textureImporter != null) {
+			// 	// set texture as UI sprite
+			// 	if (textureImporter.textureType != TextureImporterType.Sprite)
+			// 		textureImporter.textureType = TextureImporterType.Sprite;
+			//
+			// 	// update texture size
+			// 	if (textureImporter.maxTextureSize != (int)TextureSize)
+			// 		textureImporter.maxTextureSize = (int)TextureSize;
+			//
+			// 	// clamp texture
+			// 	if (textureImporter.wrapMode != TextureWrapMode.Clamp)
+			// 		textureImporter.wrapMode = TextureWrapMode.Clamp;
+			//
+			// 	// disable POT scaling
+			// 	if (mapTextureSize.x != mapTextureSize.y && textureImporter.npotScale != TextureImporterNPOTScale.None)
+			// 		textureImporter.npotScale = TextureImporterNPOTScale.None;
+			//
+			// 	// save changes
+			// 	textureImporter.SaveAndReimport ();
+			//
+			// 	
+			// 	HNSMapProfileUtilities.CreateProfile (relativeTexturePath, mapTextureSize, Background, MapBounds);
+			// 	// create map profile
+			//
+			// 	// refresh asset database
+			// 	AssetDatabase.Refresh ();
+			// } else {
+			// 	Debug.LogError ("MapTextureCreator couldn't update the texture import settings. Please adjust the texture size manually within the texture import settings.");
+			// }
+			//
+			// // finish operation
+			// EditorUtility.DisplayDialog ("HNS MapTextureCreator", string.Format ("Successfully created profile '{0}':\n\n{1}", MapName, mapTexturePath), "OK");
+			//
+			// // destroy render camera
+			// DestroyRenderCamera ();
 
 			yield return null;
 		}
