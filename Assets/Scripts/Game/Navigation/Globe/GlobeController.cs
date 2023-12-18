@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,6 +47,12 @@ public class GlobeController : MonoBehaviour
 
 	PlayerAction playerActions;
 
+	private void OnEnable()
+	{
+		// Simulate a click in the middle of the screen
+		HandleSelection();
+	}
+	
 	void Awake()
 	{
 		playerActions = new PlayerAction();
@@ -145,7 +152,14 @@ public class GlobeController : MonoBehaviour
 
 	void HandleSelection()
 	{
+		
+#if UNITY_EDITOR
+		// Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2,0));
 		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+#elif UNITY_SWITCH
+		Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2,0));
+#endif
 		GameObject selection = Raycast(ray, globeMask);
 		overrideTextDisplay = false;
 
@@ -185,7 +199,13 @@ public class GlobeController : MonoBehaviour
 
 	GameObject Raycast(Ray ray, LayerMask mask)
 	{
-		Vector2 mousePos = Input.mousePosition;
+#if UNITY_EDITOR
+		Vector2 mousePos = new Vector2(Screen.width / 2, Screen.height / 2);
+		// Vector2 mousePos = Input.mousePosition;
+
+#elif UNITY_SWITCH
+		Vector2 mousePos = new Vector2(Screen.width / 2, Screen.height / 2);
+#endif
 		RaycastHit hitInfo;
 
 		if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, mask))
