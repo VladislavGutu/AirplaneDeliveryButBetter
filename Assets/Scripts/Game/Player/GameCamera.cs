@@ -63,7 +63,6 @@ public class GameCamera : MonoBehaviour
 
 			cam.fieldOfView = Mathf.SmoothDamp(cam.fieldOfView, CalculateFOV(), ref smoothFovVelocity, fovSmoothTime);
 
-
 			gameCameraUpdateComplete?.Invoke(cam);
 		}
 	}
@@ -94,7 +93,7 @@ public class GameCamera : MonoBehaviour
 				if (GameController.IsState(GameState.Playing))
 				{
 					// If started playing, transition from menu cam to forward cam
-					menuToGameViewTransitionT += Time.deltaTime * 1f;
+					menuToGameViewTransitionT += Time.deltaTime * .5f;
 					view = ViewSettings.Lerp(menuView, lookingAheadView, Seb.Ease.Quadratic.Out(menuToGameViewTransitionT));
 					if (menuToGameViewTransitionT > 1)
 					{

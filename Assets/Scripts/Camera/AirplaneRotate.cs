@@ -11,12 +11,11 @@ public class AirplaneRotate : MonoBehaviour
         if (GameController.IsState(GameState.InMainMenu))
         {
 #if UNITY_EDITOR
-            // Get input from the horizontal axis (e.g., arrow keys or joystick)
             float horizontalInput = Input.GetAxis("Horizontal");
 #endif
 
 #if UNITY_SWITCH
-            float horizontalInput = Gamepad.current?.leftStick.x.ReadValue() ?? 0f;
+            //float horizontalInput = Gamepad.current?.leftStick.x.ReadValue() ?? 0f;
 #endif
             // Rotate the object based on the input
             if (horizontalInput > 0.1f || horizontalInput < -0.1f)

@@ -20,14 +20,14 @@ public class Menu : MonoBehaviour
 		}
 		if (subMenus != null)
 		{
-			foreach (var submenu in subMenus)
-			{
-				submenu.openButton.onClick.AddListener(submenu.menu.OpenMenu);
-				submenu.openButton.onClick.AddListener(OnSubMenuOpened);
-				submenu.menu.menuClosedEvent += OnSubMenuClosed;
-				// If the menu is closed while one of its submenus is open, the submenu should be closed as well
-				menuClosedEvent += submenu.menu.CloseMenu;
-			}
+			// foreach (var submenu in subMenus)
+			// {
+			// 	submenu.openButton.onClick.AddListener(submenu.menu.OpenMenu);
+			// 	submenu.openButton.onClick.AddListener(OnSubMenuOpened);
+			// 	submenu.menu.menuClosedEvent += OnSubMenuClosed;
+			// 	// If the menu is closed while one of its submenus is open, the submenu should be closed as well
+			// 	menuClosedEvent += submenu.menu.CloseMenu;
+			// }
 		}
 
 		// If open at start, then trigger OnOpened so any needed setup code can be run
