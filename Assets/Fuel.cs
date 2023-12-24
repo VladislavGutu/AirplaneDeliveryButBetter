@@ -10,12 +10,17 @@ public class Fuel : MonoBehaviour
     public Slider fuelDisplay;
     float countDown;
     public float baseInterval = 1f;
+    
+    public GameObject _howToPlay;
 
     private bool _finishBenzin = false;
      void Start()
      {
          fuelDisplay.maxValue = currentFuel;
         countDown = baseInterval;
+        
+        if (PlayerPrefs.GetInt("FirstEnter") == 1)
+            _howToPlay.SetActive(true);
     }
 
     // Update is called once per frame

@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
 	{
 		hudGroup.alpha = 0;
 		_instance = this;
+		PlayerPrefs.SetInt("FirstEnter", 1);
 	}
 	
 	public void PreviousImages()

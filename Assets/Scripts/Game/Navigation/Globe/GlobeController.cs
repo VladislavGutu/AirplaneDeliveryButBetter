@@ -81,6 +81,7 @@ public class GlobeController : MonoBehaviour
 
 			targetZoom = zoomMinMax.x;
 			cam.fieldOfView = targetZoom;
+			
 		}
 		else
 		{
