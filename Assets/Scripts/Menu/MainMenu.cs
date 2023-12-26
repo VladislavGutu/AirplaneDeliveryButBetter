@@ -30,8 +30,6 @@ public class MainMenu : Menu
 		{
 			SceneManager.LoadScene(0);
 		}
-
-		PlayerPrefs.SetInt("FirstEnter", 1);
 		
 		playButton.onClick.AddListener(PlayGame);
 		quitButton.onClick.AddListener(Quit);

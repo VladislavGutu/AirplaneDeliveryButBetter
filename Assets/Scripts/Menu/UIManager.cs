@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
 	float smoothV;
 
 	public GameObject _mainMenuGO;
+	public GameObject _mainMenuNotCanvasGO;
 	public GameObject _howToPlayGO;
 	public List<Image> _howToPlayImages;
 	private int _currentHowToPlay = 0;

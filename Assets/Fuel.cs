@@ -19,8 +19,10 @@ public class Fuel : MonoBehaviour
          fuelDisplay.maxValue = currentFuel;
         countDown = baseInterval;
         
-        if (PlayerPrefs.GetInt("FirstEnter") == 1)
+        if (PlayerPrefs.GetInt("Tutorial") == 0)
             _howToPlay.SetActive(true);
+        else
+            UIManager._instance._mainMenuNotCanvasGO.SetActive(true);
     }
 
     // Update is called once per frame
@@ -51,5 +53,10 @@ public class Fuel : MonoBehaviour
             }
         }
         
+    }
+
+    public void ExitTutorial()
+    {
+        PlayerPrefs.SetInt("Tutorial", 1);
     }
 }
