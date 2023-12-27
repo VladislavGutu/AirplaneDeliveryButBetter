@@ -87,7 +87,7 @@ public class LightingControl : MonoBehaviour {
 	}
 	void Start(){
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-		Application.targetFrameRate = 30;
+		Application.targetFrameRate = 300;
 		UpdateLighting();
 	}
 

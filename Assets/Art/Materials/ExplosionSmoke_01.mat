@@ -12,10 +12,8 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - ADVFOG_ON
-  m_InvalidKeywords:
-  - ADVAMBIENT_ON
-  - SHADOW_ON
+  - ADVFOG_OFF
+  m_InvalidKeywords: []
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
