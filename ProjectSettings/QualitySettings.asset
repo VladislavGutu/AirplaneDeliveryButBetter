@@ -57,7 +57,7 @@ QualitySettings:
   - serializedVersion: 3
     name: Level 1
     pixelLightCount: 2
-    shadows: 1
+    shadows: 0
     shadowResolution: 0
     shadowProjection: 0
     shadowCascades: 2
@@ -86,7 +86,7 @@ QualitySettings:
     streamingMipmapsRenderersPerFrame: 512
     streamingMipmapsMaxLevelReduction: 2
     streamingMipmapsMaxFileIORequests: 1024
-    particleRaycastBudget: 1024
+    particleRaycastBudget: 256
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
